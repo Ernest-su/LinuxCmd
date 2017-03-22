@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LinuxCmd</string>
+    <string name="search">搜索命令</string>
+    <string name="search_hint">搜索命令</string>
+    <string name="load_cmd_detail_error">加载命令详情出错啦</string>
+    <string name="show_list">查看列表</string>
+</resources>
