@@ -3,3 +3,4 @@
 
 命令行文件来自 [jaywcjlove/linux-command](https://github.com/jaywcjlove/linux-command.git)  
 💗 感谢作者的辛勤付出。
+欢迎PR.
