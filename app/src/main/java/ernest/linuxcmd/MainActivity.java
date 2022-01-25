@@ -6,17 +6,19 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
@@ -28,25 +30,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements CmdListAdapter.OnListItemClickListener {
-    @BindView(R.id.rootView)
     View rootView;
-    @BindView(R.id.wvContent)
     WebView wvContent;
 
     CmdListAdapter adapter;
     List<String> cmdList = new ArrayList<>();
-    @BindView(R.id.rvCmdList)
     RecyclerView rvCmdList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        rootView = findViewById(R.id.rootView);
+        wvContent = findViewById(R.id.wvContent);
+        rvCmdList = findViewById(R.id.rvCmdList);
         AssetManager assetManager = getAssets();
         if (assetManager != null) {
             try {
@@ -139,8 +138,7 @@ public class MainActivity extends AppCompatActivity implements CmdListAdapter.On
     private String getSuggestion(SearchView searchView, int position) {
         Cursor cursor = (Cursor) searchView.getSuggestionsAdapter().getItem(
                 position);
-        return cursor.getString(cursor
-                .getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1));
+        return cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1));
     }
 
     @Override
