@@ -33,7 +33,7 @@ jobs:
       uses: yurakurets/action-release-debugapk@master
       env:
        REPO_BRANCH: master
-       GITHUB_TOKEN: ${{ TOKEN }}
+       GITHUB_TOKEN: ${{ secrets.TOKEN }}
        APK_FOLDER: android/app/build/outputs/apk/release/app-release.apk
        APP_FOLDER: android/app
        RELEASE_TITLE: New Build
