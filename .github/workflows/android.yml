@@ -28,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v3.0.0
       with:
         name: debug-apk
-        path: app/build/outputs/apk/*.apk
+        path: "**/*.apk"
