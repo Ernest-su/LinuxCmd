@@ -29,3 +29,8 @@ jobs:
       with:
         name: debug-apk
         path: "**/*.apk"
+    - name: Release apk files
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: test
+        files: "**/*.apk"
