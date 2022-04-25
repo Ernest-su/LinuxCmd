@@ -138,7 +138,12 @@ public class MainActivity extends AppCompatActivity implements CmdListAdapter.On
     private String getSuggestion(SearchView searchView, int position) {
         Cursor cursor = (Cursor) searchView.getSuggestionsAdapter().getItem(
                 position);
-        return cursor.getString(cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1));
+        int index = cursor.getColumnIndex(SearchManager.SUGGEST_COLUMN_TEXT_1);
+        if (index >= 0) {
+            return cursor.getString(index);
+        } else {
+            return "";
+        }
     }
 
     @Override
