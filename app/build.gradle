@@ -13,7 +13,20 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        release {
+
+            storeFile file(KEYSTORE)
+
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+
+            keyAlias System.getenv("KEY_ALIAS")
+
+            keyPassword System.getenv("KEY_PASSWORD")
         }
     }
 }
