@@ -25,12 +25,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
-     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
-    # the publishing section of your build.gradle
-    - name: Publish to GitHub Packages
-      uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.0.0
       with:
-        arguments: publish
-      env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        name: debug-apk
+        path: build\app\outputs\app-debug.apk
