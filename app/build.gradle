@@ -1,5 +1,15 @@
 apply plugin: 'com.android.application'
 
+String getTime() {
+    String time = (('git log --pretty=format:%ci HEAD -1'.execute().text.trim()).split(" ")[0])
+    String[] date = time.split("-")
+    String versionCode = ""
+    for (int i = 0; i < date.length; i++) {
+        versionCode = versionCode + date[i]
+    }
+    print("time = " + time + ", versiocode = " + versionCode)
+    return versionCode
+}
 // Auto-incrementing commit count based on counting commits to HEAD (Build #543)
 def gitCommitCount = Integer.parseInt('git rev-list HEAD --count'.execute().text.trim())
 def gitSHA = ('git rev-parse --short HEAD'.execute().text.trim())
