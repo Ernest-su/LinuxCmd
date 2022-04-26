@@ -2,9 +2,8 @@ name: Android CI
 
 on:
   push:
-    branches: [ release ]
-  pull_request:
-    branches: [ release ]
+    tags:
+      - '*'
 
 jobs:
   build:
@@ -41,4 +40,6 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file:  app/build/outputs/apk/release/*.apk
+        tag: ${{ github.ref }}
+        release_name: ${{ github.ref }}
         overwrite: true
