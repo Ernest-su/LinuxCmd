@@ -50,7 +50,7 @@ android {
     }
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = 'LinuxCmd-' + variant.productFlavors[0].name + '-v' + defaultConfig.versionName.toUpperCase() + '.apk'
+            outputFileName = 'LinuxCmd-' + defaultConfig.versionName + '.apk'
         }
     }
 
