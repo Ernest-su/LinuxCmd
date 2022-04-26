@@ -43,3 +43,4 @@ jobs:
         tag: ${{ github.ref }}
         release_name: ${{ github.ref }}
         overwrite: true
+        file_glob: true
