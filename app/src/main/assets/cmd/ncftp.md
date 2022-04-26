@@ -7,15 +7,15 @@ ncftp
 
 **ncftp命令** 是增强的的ftp工具，比传统的FTP指令更加强大。FTP让用户得以下载存放于服务器主机的文件，也能将文件上传到远端主机放置。ncftp是文字模式FTP程序的佼佼者，它具备多样特色，包括显示传输速率，下载进度，自动续传，标住书签，可通过防火墙和代理服务器等。
 
-### 语法  
+###  语法
 
-```
+```shell
 ncftp(选项)(参数)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -u：指定登录FTP服务器时使用的用户名；
 -p：指定登录FTP服务器时使用的密码；
 -P：如果FTP服务器没有使用默认的TCP协议的21端口，则使用此选项指定FTP服务器的端口号。
@@ -23,13 +23,13 @@ ncftp(选项)(参数)
 -R：递规传子目录
 ```
 
-### 参数  
+###  参数
 
 FTP服务器：指定远程FTP服务器的ip地址或主机名。
 
-### 安装  
+###  安装
 
-```
+```shell
 wget ftp://ftp.ncftp.com/ncftp/ncftp-3.2.3-src.tar.gz
 tar zxvf ncftp-3.2.3-src.tar.gz
 cd ncftp-3.2.3/
@@ -37,11 +37,11 @@ cd ncftp-3.2.3/
 make && make install
 ```
 
-### 实例  
+###  实例
 
 将本地/etc/目录内的所有文件和目录，上传到FTP服务器的flv/games/目录内(如果不存在flv/games/目录则自动创建)。
 
-```
+```shell
 /usr/local/ncftp/bin/ncftpput -u koumm -p koumm -P 21 -m -R 192.168.162.137  flv/games/ /etc/*
 ```
 
@@ -61,4 +61,3 @@ ncftp的基本命令和普通ftp一样，可以输入help获得命令列表。�
 *   lrmdir: 删除本地目录。
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

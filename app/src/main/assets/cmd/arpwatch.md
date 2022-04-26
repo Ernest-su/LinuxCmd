@@ -7,15 +7,15 @@ arpwatch
 
 **arpwatch命令** 用来监听网络上arp的记录。
 
-### 语法  
+###  语法
 
-```
+```shell
 arpwatch(选项)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -d：启动排错模式；
 -f<记录文件>：设置存储ARP记录的文件，预设为/var/arpwatch/arp.dat；
 -i<接口>：指定监听ARP的接口，预设的接口为eth0；
@@ -23,4 +23,3 @@ arpwatch(选项)
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

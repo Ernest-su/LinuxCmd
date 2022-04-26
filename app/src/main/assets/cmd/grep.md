@@ -5,11 +5,11 @@ grep
 
 ## 补充说明
 
-**grep** （global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。用于过滤/搜索的特定字符。可使用正则表达式能多种命令配合使用，使用上十分灵活。
+**grep** （global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。用于过滤/搜索的特定字符。可使用正则表达式能配合多种命令使用，使用上十分灵活。
 
-### 选项  
+###  选项 
 
-```bash
+```shell
 -a --text  # 不要忽略二进制数据。
 -A <显示行数>   --after-context=<显示行数>   # 除了显示符合范本样式的那一行之外，并显示该行之后的内容。
 -b --byte-offset                           # 在显示符合范本样式的那一行之外，并显示该行之前的内容。
@@ -24,10 +24,11 @@ grep
 -G --basic-regexp   # 将范本样式视为普通的表示法来使用。
 -h --no-filename    # 在显示符合范本样式的那一列之前，不标示该列所属的文件名称。
 -H --with-filename  # 在显示符合范本样式的那一列之前，标示该列的文件名称。
--i --ignore-case    # 胡列字符大小写的差别。
+-i --ignore-case    # 忽略字符大小写的差别。
 -l --file-with-matches   # 列出文件内容符合指定的范本样式的文件名称。
 -L --files-without-match # 列出文件内容不符合指定的范本样式的文件名称。
 -n --line-number         # 在显示符合范本样式的那一列之前，标示出该列的编号。
+-P --perl-regexp         # PATTERN 是一个 Perl 正则表达式
 -q --quiet或--silent     # 不显示任何信息。
 -R/-r  --recursive       # 此参数的效果和指定“-d recurse”参数相同。
 -s --no-messages  # 不显示错误信息。
@@ -37,13 +38,14 @@ grep
 -x --line-regexp  # 只显示全列符合的列。
 -y # 此参数效果跟“-i”相同。
 -o # 只输出文件中匹配到的部分。
+-m <num> --max-count=<num> # 找到num行结果后停止查找，用来限制匹配行数
 ```
 
 ### 规则表达式
 
-```bash
+```shell
 ^    # 锚定行的开始 如：'^grep'匹配所有以grep开头的行。    
-$    # 锚定行的结束 如：'grep$'匹配所有以grep结尾的行。    
+$    # 锚定行的结束 如：'grep$' 匹配所有以grep结尾的行。
 .    # 匹配一个非换行符的字符 如：'gr.p'匹配gr后接一个任意字符，然后是p。    
 *    # 匹配零个或多个先前字符 如：'*grep'匹配所有一个或多个空格后紧跟grep的行。    
 .*   # 一起用代表任意字符。   
@@ -64,110 +66,109 @@ x\{m,n\}  # 重复字符x，至少m次，不多于n次，如：'o\{5,10\}'匹配
 
 在文件中搜索一个单词，命令会返回一个包含 **“match_pattern”** 的文本行：
 
-```
+```shell
 grep match_pattern file_name
 grep "match_pattern" file_name
-
 ```
 
 在多个文件中查找：
 
-```
+```shell
 grep "match_pattern" file_1 file_2 file_3 ...
-
 ```
 
 输出除之外的所有行  **-v**  选项：
 
-```
+```shell
 grep -v "match_pattern" file_name
-
 ```
 
 标记匹配颜色  **--color=auto**  选项：
 
-```
+```shell
 grep "match_pattern" file_name --color=auto
-
 ```
 
 使用正则表达式  **-E**  选项：
 
-```
+```shell
 grep -E "[1-9]+"
-或
+# 或
 egrep "[1-9]+"
-
 ```
+使用正则表达式  **-P**  选项：
+
+```shell
+grep -P "(\d{3}\-){2}\d{4}" file_name
+```
+
 
 只输出文件中匹配到的部分  **-o**  选项：
 
-```
+```shell
 echo this is a test line. | grep -o -E "[a-z]+\."
 line.
 
 echo this is a test line. | egrep -o "[a-z]+\."
 line.
-
 ```
 
 统计文件或者文本中包含匹配字符串的行数  **-c**  选项：
 
-```
+```shell
 grep -c "text" file_name
+```
 
+搜索命令行历史记录中 输入过 `git` 命令的记录：
+
+```shell
+history | grep git
 ```
 
 输出包含匹配字符串的行数  **-n**  选项：
 
-```
+```shell
 grep "text" -n file_name
-或
+# 或
 cat file_name | grep "text" -n
 
 #多个文件
 grep "text" -n file_1 file_2
-
 ```
 
 打印样式匹配所位于的字符或字节偏移：
 
-```
+```shell
 echo gun is not unix | grep -b -o "not"
 7:not
-
 #一行中字符串的字符便宜是从该行的第一个字符开始计算，起始值为0。选项  **-b -o**  一般总是配合使用。
-
 ```
 
 搜索多个文件并查找匹配文本在哪些文件中：
 
-```
+```shell
 grep -l "text" file1 file2 file3...
-
 ```
 
-### grep递归搜索文件  
+###  grep递归搜索文件 
 
 在多级目录中对文本进行递归搜索：
 
-```
+```shell
 grep "text" . -r -n
 # .表示当前目录。
-
 ```
 
 忽略匹配样式中的字符大小写：
 
-```
+```shell
 echo "hello world" | grep -i "HELLO"
-hello
-
+# hello
 ```
 
 选项  **-e**  制动多个匹配样式：
 
-```
+```shell
 echo this is a text line | grep -e "is" -e "line" -o
 is
 line
@@ -178,26 +179,25 @@ aaa
 bbb
 
 echo aaa bbb ccc ddd eee | grep -f patfile -o
-
 ```
 
 在grep搜索结果中包括或者排除指定文件：
 
-```
-#只在目录中所有的.php和.html文件中递归搜索字符"main()"
+```shell
+# 只在目录中所有的.php和.html文件中递归搜索字符"main()"
 grep "main()" . -r --include *.{php,html}
 
-#在搜索结果中排除所有README文件
+# 在搜索结果中排除所有README文件
 grep "main()" . -r --exclude "README"
 
-#在搜索结果中排除filelist文件列表里的文件
+# 在搜索结果中排除filelist文件列表里的文件
 grep "main()" . -r --exclude-from filelist
 
 ```
 
 使用0值字节后缀的grep与xargs：
 
-```bash
+```shell
 # 测试文件：
 echo "aaa" > file1
 echo "bbb" > file2
@@ -205,20 +205,19 @@ echo "aaa" > file3
 
 grep "aaa" file* -lZ | xargs -0 rm
 
-#执行后会删除file1和file3，grep输出用-Z选项来指定以0值字节作为终结符文件名（\0），xargs -0 读取输入并用0值字节终结符分隔文件名，然后删除匹配文件，-Z通常和-l结合使用。
-
+# 执行后会删除file1和file3，grep输出用-Z选项来指定以0值字节作为终结符文件名（\0），xargs -0 读取输入并用0值字节终结符分隔文件名，然后删除匹配文件，-Z通常和-l结合使用。
 ```
 
 grep静默输出：
 
-```bash
+```shell
 grep -q "test" filename
 # 不会输出任何信息，如果命令运行成功返回0，失败则返回非0值。一般用于条件测试。
 ```
 
 打印出匹配文本之前或者之后的行：
 
-```bash
+```shell
 # 显示匹配某个结果之后的3行，使用 -A 选项：
 seq 10 | grep "5" -A 3
 5
@@ -253,4 +252,4 @@ b
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+

@@ -7,15 +7,15 @@ lspci
 
 **lspci命令** 用于显示当前主机的所有PCI总线信息，以及所有已连接的PCI设备信息。
 
-### 语法  
+###  语法
 
-```
+```shell
 lspci(选项)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -n：以数字方式显示PCI厂商和设备代码；
 -t：以树状结构显示PCI设备的层次关系，包括所有的总线、桥、设备以及它们之间的联接；
 -b：以总线为中心的视图；
@@ -25,9 +25,9 @@ lspci(选项)
 -m：以机器可读方式显示PCI设备信息。
 ```
 
-### 实例  
+###  实例
 
-```
+```shell
 [root@localhost ~]# lspci
 00:00.0 host bridge: Intel Corporation 5500 I/O Hub to ESI Port (rev 22)
 00:01.0 PCI bridge: Intel Corporation 5520/5500/X58 I/O Hub PCI Express Root Port 1 (rev 22)
@@ -77,4 +77,3 @@ lspci(选项)
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

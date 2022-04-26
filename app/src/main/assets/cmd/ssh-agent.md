@@ -9,16 +9,16 @@ ssh密钥管理器
 
 其实ssh-agent就是一个密钥管理器，运行ssh-agent以后，使用ssh-add将私钥交给ssh-agent保管，其他程序需要身份验证的时候可以将验证申请交给ssh-agent来完成整个认证过程。
 
-### 语法  
+###  语法
 
-```
+```shell
 ssh-agent [-c | -s] [-d] [-a bind_address] [-t life] [command [arg ...]]
 ssh-agent [-c | -s] -k
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -a bind_address：bind the agent to the UNIX-domain socket bind_address.
 -c：生成C-shell风格的命令输出。
 -d：调试模式。
@@ -27,15 +27,14 @@ ssh-agent [-c | -s] -k
 -t life：设置默认值添加到代理人的身份最大寿命。
 ```
 
-### 实例  
+###  实例
 
 运行ssh-agent：
 
-```
+```shell
 ssh-agent
 ```
 
 运行ssh-agent，它会打印出来它使用的环境和变量。
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

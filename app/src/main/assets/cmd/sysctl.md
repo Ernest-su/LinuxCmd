@@ -7,15 +7,15 @@ sysctl
 
 **sysctl命令** 被用于在内核运行时动态地修改内核的运行参数，可用的内核参数在目录`/proc/sys`中。它包含一些TCP/ip堆栈和虚拟内存系统的高级选项， 这可以让有经验的管理员提高引人注目的系统性能。用sysctl可以读取设置超过五百个系统变量。
 
-### 语法  
+###  语法
 
-```
+```shell
 sysctl(选项)(参数)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -n：打印值时不打印关键字；
 -e：忽略未知关键字错误；
 -N：仅打印名称；
@@ -25,11 +25,11 @@ sysctl(选项)(参数)
 -A：以表格方式打印当前所有可用的内核参数变量和值。
 ```
 
-### 参数  
+###  参数
 
 变量=值：设置内核参数对应的变量值。
 
-### 实例  
+###  实例
 
 查看所有可读变量：
 
@@ -41,7 +41,7 @@ sysctl kern.maxproc kern.maxproc: 1044
 
 要设置一个指定的变量，直接用`variable=value`这样的语法：
 
-```
+```shell
 sysctl kern.maxfiles=5000
 kern.maxfiles: 2088 -> 5000
 ```
@@ -50,7 +50,7 @@ kern.maxfiles: 2088 -> 5000
 
 sysctl变量的设置通常是字符串、数字或者布尔型。（布尔型用 1 来表示'yes'，用 0 来表示'no'）。
 
-```
+```shell
 sysctl -w kernel.sysrq=0
 sysctl -w kernel.core_uses_pid=1
 sysctl -w net.ipv4.conf.default.accept_redirects=0
@@ -65,13 +65,13 @@ sysctl -w net.ipv4.tcp_window_scaling=1
 sysctl -w net.ipv4.tcp_sack=1
 ```
 
-### 配置sysctl  
+###  配置sysctl
 
 编辑此文件：`/etc/sysctl.conf`
 
 如果该文件为空，则输入以下内容，否则请根据情况自己做调整：
 
-```
+```shell
 # Controls source route verification
 # Default should work for all interfaces
 net.ipv4.conf.default.rp_filter = 1
@@ -173,17 +173,16 @@ net.core.optmem_max = 40960
 
 如果希望屏蔽别人 ping 你的主机，则加入以下代码：
 
-```
+```shell
 # Disable ping requests
 net.ipv4.icmp_echo_ignore_all = 1
 ```
 
 编辑完成后，请执行以下命令使变动立即生效：
 
-```
+```shell
 /sbin/sysctl -p
 /sbin/sysctl -w net.ipv4.route.flush=1
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

@@ -7,11 +7,11 @@ dstat
 
 **dstat命令** 是一个用来替换vmstat、iostat、netstat、nfsstat和ifstat这些命令的工具，是一个全能系统信息统计工具。与sysstat相比，dstat拥有一个彩色的界面，在手动观察性能状况时，数据比较显眼容易观察；而且dstat支持即时刷新，譬如输入`dstat 3`即每三秒收集一次，但最新的数据都会每秒刷新显示。和sysstat相同的是，dstat也可以收集指定的性能资源，譬如`dstat -c`即显示CPU的使用情况。
 
-### 下载安装  
+###  下载安装
 
  **方法一** 
 
-```
+```shell
 yum install -y dstat
 ```
 
@@ -19,18 +19,18 @@ yum install -y dstat
 
 官网下载地址：http://dag.wieers.com/rpm/packages/dstat
 
-```
+```shell
 wget http://dag.wieers.com/rpm/packages/dstat/dstat-0.6.7-1.rh7.rf.noarch.rpm
 rpm -ivh dstat-0.6.7-1.rh7.rf.noarch.rpm
 ```
 
-### 使用说明  
+###  使用说明
 
 安装完后就可以使用了，dstat非常强大，可以实时的监控cpu、磁盘、网络、IO、内存等使用情况。
 
 直接使用dstat，默认使用的是`-cdngy`参数，分别显示cpu、disk、net、page、system信息，默认是1s显示一条信息。可以在最后指定显示一条信息的时间间隔，如`dstat 5`是没5s显示一条，`dstat 5 10`表示没5s显示一条，一共显示10条。
 
-```
+```shell
 [root@iZ23uulau1tZ ~]# dstat
 ----total-cpu-usage---- -dsk/total- -net/total- ---paging-- ---system--
 usr sys idl wai hiq siq| read  writ| recv  send|  in   out | int   csw
@@ -49,15 +49,15 @@ usr sys idl wai hiq siq| read  writ| recv  send|  in   out | int   csw
 
 其他的都很好理解。
 
-### 语法  
+###  语法
 
-```
+```shell
 dstat [-afv] [options..] [delay [count]]
 ```
 
-### 常用选项  
+###  常用选项
 
-```
+```shell
 -c：显示CPU系统占用，用户占用，空闲，等待，中断，软件中断等信息。
 -C：当有多个CPU时候，此参数可按需分别显示cpu状态，例：-C 0,1 是显示cpu0和cpu1的信息。
 -d：显示磁盘读写数据大小。
@@ -81,11 +81,11 @@ dstat [-afv] [options..] [delay [count]]
 
 当然dstat还有很多更高级的用法，常用的基本这些选项，更高级的用法可以结合man文档。
 
-### 实例  
+###  实例
 
 如想监控swap，process，sockets，filesystem并显示监控的时间：
 
-```
+```shell
 [root@iZ23uulau1tZ ~]# dstat -tsp --socket --fs
 ----system---- ----swap--- ---procs--- ------sockets------ --filesystem-
   date/time   | used  free|run blk new|tot tcp udp raw frg|files  inodes
@@ -99,7 +99,7 @@ dstat [-afv] [options..] [delay [count]]
 
 若要将结果输出到文件可以加`--output filename`：
 
-```
+```shell
 [root@iZ23uulau1tZ ~]# dstat -tsp --socket --fs --output /tmp/ds.csv
 ----system---- ----swap--- ---procs--- ------sockets------ --filesystem-
   date/time   | used  free|run blk new|tot tcp udp raw frg|files  inodes
@@ -117,7 +117,7 @@ dstat [-afv] [options..] [delay [count]]
 
 下面这些插件并不是都可以直接使用的，有的还依赖其他包，如想监控mysql，必须要装python连接mysql的一些包。
 
-```
+```shell
 [root@iZ23uulau1tZ ~]# dstat --list
 internal:
         aio, cpu, cpu24, disk, disk24, disk24old, epoch, fs, int, int24, io, ipc, load, lock, mem, net, page, page24, proc, raw, socket, swap, swapold, sys, tcp, time, udp, unix, vm
@@ -130,4 +130,3 @@ internal:
 dstat命令的基本用法就说到这里，更多用法有待摸索，如果您需要补充内容请给我们发邮件，谢谢！
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

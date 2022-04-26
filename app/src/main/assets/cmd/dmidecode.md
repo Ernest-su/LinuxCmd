@@ -11,15 +11,15 @@ DMI（Desktop Management Interface,DMI）就是帮助收集电脑系统信息的
 
 DMI充当了管理工具和系统层之间接口的角色。它建立了标准的可管理系统更加方便了电脑厂商和用户对系统的了解。DMI的主要组成部分是Management Information Format(MIF)数据库。这个数据库包括了所有有关电脑系统和配件的信息。通过DMI，用户可以获取序列号、电脑厂商、串口信息以及其它系统配件信息。
 
-### 语法  
+###  语法 
 
-```
+```shell
 dmidecode [选项]
 ```
 
-### 选项  
+###  选项 
 
-```
+```shell
 -d：(default:/dev/mem)从设备文件读取信息，输出内容与不加参数标准输出相同。
 -h：显示帮助信息。
 -s：只显示指定DMI字符串的信息。(string)
@@ -114,19 +114,26 @@ dmidecode [选项]
 *   Additional Information
 *   Onboard Device
 
-### 实例  
+###  实例 
 
-```
-查看服务器型号：dmidecode | grep 'Product Name'
-查看主板的序列号：dmidecode |grep 'Serial Number'
-查看系统序列号：dmidecode -s system-serial-number
-查看内存信息：dmidecode -t memory
-查看OEM信息：dmidecode -t 11
+```shell
+dmidecode -t 1  # 查看服务器信息
+dmidecode | grep 'Product Name' # 查看服务器型号 
+dmidecode |grep 'Serial Number' # 查看主板的序列号 
+dmidecode -t 2  # 查看主板信息
+dmidecode -s system-serial-number # 查看系统序列号 
+dmidecode -t memory # 查看内存信息 
+dmidecode -t 11 # 查看OEM信息 
+dmidecode -t 17 # 查看内存条数
+dmidecode -t 16 # 查询内存信息
+dmidecode -t 4  # 查看CPU信息
+
+cat /proc/scsi/scsi # 查看服务器硬盘信息
 ```
 
 不带选项执行dmidecode命令通常会输出所有的硬件信息。dmidecode命令有个很有用的选项-t，可以按指定类型输出相关信息，假如要获得处理器方面的信息，则可以执行：
 
-```
+```shell
 [root@localhost ~]# dmidecode -t processor
 # dmidecode 2.11
 SMBIOS 2.5 present.
@@ -212,5 +219,75 @@ Processor Information
         Characteristics: None
 ```
 
+查看内存的插槽数，已经使用多少插槽。每条内存多大，已使用内存多大
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+```shell
+dmidecode|grep -P -A5 "Memory\s+Device"|grep Size|grep -v Range 
+
+#   Size: 2048 MB
+#   Size: 2048 MB
+#   Size: 4096 MB
+#   Size: No Module Installed
+```
+
+查看内存支持的最大内存容量
+
+```shell
+dmidecode|grep -P 'Maximum\s+Capacity'
+
+#  Maximum Capacity: 16 GB
+```
+
+查看内存的频率
+
+```shell
+dmidecode|grep -A16 "Memory Device"
+
+#   Memory Device
+#     Array Handle: 0x1000
+#     Error Information Handle: Not Provided
+#     Total Width: 72 bits
+#     Data Width: 64 bits
+#     Size: 2048 MB
+#     Form Factor: DIMM
+#     Set: 1
+#     Locator: DIMM_A1
+#     Bank Locator: Not Specified
+#     Type: DDR3
+#     Type Detail: Synchronous Unbuffered (Unregistered)
+#     Speed: 1333 MHz
+#     Manufacturer: 00CE000080CE
+#     Serial Number: 4830F3E1
+#     Asset Tag: 01093200
+#     Part Number: M391B5673EH1-CH9
+#   --
+#   Memory Device
+#     Array Handle: 0x1000
+#     Error Information Handle: Not Provided
+#     Total Width: 72 bits
+#     Data Width: 64 bits
+#     Size: 2048 MB
+#     Form Factor: DIMM
+#     Set: 1
+#     Locator: DIMM_A2
+#     Bank Locator: Not Specified
+#     Type: DDR3
+#     Type Detail: Synchronous Unbuffered (Unregistered)
+#     Speed: 1333 MHz
+#     Manufacturer: 00AD000080AD
+#     Serial Number: 1BA1F0B5
+#     Asset Tag: 01110900
+#     Part Number: HMT325U7BFR8C-H9
+#   --
+
+dmidecode|grep -A16 "Memory Device"|grep 'Speed'
+
+#  Speed: 1333 MHz
+#  Speed: 1333 MHz
+#  Speed: 1333 MHz
+#  Speed: Unknown
+
+```shell
+
+
+

@@ -7,28 +7,28 @@ mpstat
 
 **mpstat命令** 指令主要用于多CPU环境下，它显示各个可用CPU的状态系你想。这些信息存放在`/proc/stat`文件中。在多CPUs系统里，其不但能查看所有CPU的平均状况信息，而且能够查看特定CPU的信息。
 
-### 语法  
+###  语法
 
-```
+```shell
 mpstat(选项)(参数)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -P：指定CPU编号。
 ```
 
-### 参数  
+###  参数
 
 *   间隔时间：每次报告的间隔时间（秒）；
 *   次数：显示报告的次数。
 
-### 实例  
+###  实例
 
 当mpstat不带参数时，输出为从系统启动以来的平均值。
 
-```
+```shell
 mpstat
 Linux 2.6.9-5.31AXsmp (builder.redflag-linux.com) 12/16/2005
 09:38:46 AM CPU %user %nice %system %iowait %irq %soft %idle intr/s
@@ -39,7 +39,7 @@ Linux 2.6.9-5.31AXsmp (builder.redflag-linux.com) 12/16/2005
 
 下面的命令可以每2秒产生了2个处理器的统计数据报告，一共产生三个interval 的信息，然后再给出这三个interval的平均信息。默认时，输出是按照CPU 号排序。第一个行给出了从系统引导以来的所有活跃数据。接下来每行对应一个处理器的活跃状态。。
 
-```
+```shell
 mpstat -P ALL 2 3
 Linux 2.6.18-164.el5 (server.sys.com)    01/04/2010
 09:34:20 PM CPU   %user   %nice    %sys %iowait    %irq   %soft %steal   %idle    intr/s
@@ -52,27 +52,27 @@ Linux 2.6.18-164.el5 (server.sys.com)    01/04/2010
 
 在后台开一个2G的文件
 
-```
+```shell
 cat 1.img &
 ```
 
 然后在另一个终端运行mpstat命令
 
-```
+```shell
 mpstat
 Linux 2.6.18-164.el5 (server.sys.com)    01/04/2010
 10:17:31 PM CPU   %user   %nice    %sys %iowait    %irq   %soft %steal   %idle    intr/s
 10:17:31 PM all    0.07    0.02    0.25    0.21    0.01    0.04    0.00   99.40   1004.57
 ```
 
-```
+```shell
 mpstat
 Linux 2.6.18-164.el5 (server.sys.com)    01/04/2010
 10:17:35 PM CPU   %user   %nice    %sys %iowait    %irq   %soft %steal   %idle    intr/s
 10:17:35 PM all    0.07    0.02    0.25    0.21    0.01    0.04    0.00   99.39   1004.73
 ```
 
-```
+```shell
 mpstat 3 10
 Linux 2.6.18-164.el5 (server.sys.com)    01/04/2010
 10:17:55 PM CPU   %user   %nice    %sys %iowait    %irq   %soft %steal   %idle    intr/s
@@ -92,4 +92,3 @@ Average:     all    9.27    0.00   16.18    0.30    1.50    7.64    0.00   65.11
 上两表显示出当要正确反映系统的情况，需要正确使用命令的参数。vmstat 和iostat 也需要注意这一问题。
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

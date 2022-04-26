@@ -9,15 +9,15 @@ mkinitrd
 
 这个是重新封包核心的命令，例如你自己修改了一个设备的驱动，如果这个驱动要加入核心级别的话，就需要对核心进行重新封包，把新加的配置编译到核心内部去！
 
-### 语法  
+###  语法
 
-```
+```shell
 mkinitrd(选项)(参数)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -f：若指定的映像问家名称与现有文件重复，则覆盖现有的文件；
 -v：执行时显示详细的信息；
 --omit-scsi-modules：不要载入SCSI模块；
@@ -26,14 +26,14 @@ mkinitrd(选项)(参数)
 --version：显示版本信息。
 ```
 
-### 参数  
+###  参数
 
 *   映像文件：指定要创建的映像文件；
 *   内核版本：指定内核版本。
 
-### 实例  
+###  实例
 
-```
+```shell
 [root@localhost tmp]# mkinitrd -v -f myinitrd.img $(uname -r)
 Creating initramfs
 WARNING: using /tmp for temporary files
@@ -60,4 +60,3 @@ myinitrd.img: ASCII cpio archive (SVR4 with no CRC)
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

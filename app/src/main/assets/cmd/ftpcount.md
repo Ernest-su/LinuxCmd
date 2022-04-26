@@ -9,9 +9,8 @@ ftpcount
 
 语法：
 
-```
+```shell
 ftpcount
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

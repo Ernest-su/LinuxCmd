@@ -7,15 +7,15 @@ lpstat
 
 **lpstat命令** 用于显示CUPS中打印机的状态信息。
 
-### 语法  
+### 语法
 
-```
+```shell
 lpstat(选项)
 ```
 
-### 选项  
+### 选项
 
-```
+```shell
 -E：与打印机连接时加密；
 -R：显示打印任务的等级；
 -U：指定可选用户名；
@@ -30,4 +30,3 @@ lpstat(选项)
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

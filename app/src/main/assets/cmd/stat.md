@@ -7,15 +7,15 @@ stat
 
 **stat命令** 用于显示文件的状态信息。stat命令的输出信息比ls命令的输出信息要更详细。
 
-### 语法  
+### 语法
 
-```
+```shell
 stat(选项)(参数)
 ```
 
-### 选项  
+### 选项
 
-```
+```shell
 -L：支持符号连接；
 -f：显示文件系统状态而非文件状态；
 -t：以简洁方式输出信息；
@@ -23,13 +23,13 @@ stat(选项)(参数)
 --version：显示指令的版本信息。
 ```
 
-### 参数  
+### 参数
 
 文件：指定要显示信息的普通文件或者文件系统对应的设备文件名。
 
-### 实例  
+### 实例
 
-```
+```shell
 [root@localhost ~]# ls -l myfile
 -rw-r--r-- 1 root root 0 2010-10-09 myfile
 
@@ -51,8 +51,6 @@ Inodes: Total: 249364480  Free: 249139691
 
 [root@localhost ~]# stat -t myfile
 myfile 0 8 81a4 0 0 fd00 194805815 1 0 0 1292127755 1286628261 1286628261 4096
-
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

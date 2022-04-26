@@ -7,28 +7,28 @@ pwck
 
 **pwck命令** 用来验证系统认证文件`/etc/passwd`和`/etc/shadow`的内容和格式的完整性。
 
-### 语法  
+###  语法
 
-```
+```shell
 pwck(选项)(参数)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -q：仅报告错误信息；
 -s：以用户id排序文件“/etc/passwd”和“/etc/shadow”;
 -r：只读方式运行指令。
 ```
 
-### 参数  
+###  参数
 
 *   密码文件：指定密码文件的路径；
 *   影子文件：指定影子文件的路径。
 
-### 实例  
+###  实例
 
-```
+```shell
 pwck /etc/passwd
 user 'lp': directory '/var/spool/lpd' does not exist
 user 'news': directory '/var/spool/news' does not exist
@@ -50,4 +50,3 @@ pwck：无改变
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

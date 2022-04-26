@@ -7,15 +7,15 @@ mii-tool
 
 **mii-tool命令** 是用于查看、管理介质的网络接口的状态，有时网卡需要配置协商方式，比如10/100/1000M的网卡半双工、全双工、自动协商的配置。但大多数的网络设备是不用我们来修改协商，因为大多数网络设置接入的时候，都采用自动协商来解决相互通信的问题。不过自动协商也不是万能的，有时也会出现错误，比如丢包率比较高，这时就要我们来指定网卡的协商方式。mii-tool就是能指定网卡的协商方式。下面我们说一说mii-tool的用法。
 
-### 语法  
+###  语法
 
-```
+```shell
 usage: mii-tool [-VvRrwl] [-A media,... | -F media] [interface ...]
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -V 显示版本信息；
 -v 显示网络接口的信息；
 -R 重设MII到开启状态；
@@ -29,11 +29,11 @@ media: 100baseT4, 100baseTx-FD, 100baseTx-HD, 10baseT-FD, 10baseT-HD,
         (to advertise both HD and FD) 100baseTx, 10baseT
 ```
 
-### 实例  
+###  实例
 
 查看网络接口的协商状态：
 
-```
+```shell
 [root@localhost ~]# mii-tool -v eth0
 eth0: negotiated 100baseTx-FD, link ok
   product info: vendor 00:50:ef, model 60 rev 8
@@ -52,7 +52,7 @@ eth0: negotiated 100baseTx-FD, link ok
 
 如果我们想把网络接口eth0改为1000Mb/s全双工的模式应该怎么办呢？
 
-```
+```shell
 [root@localhost ~]# mii-tool -F 100baseTx-FD
 [root@localhost ~]# mii-tool -v eth0
 eth0: 100 Mbit, full duplex, link ok
@@ -65,9 +65,8 @@ eth0: 100 Mbit, full duplex, link ok
 
 注：是不是已经改过来了？当然，我们也一样用ethtool工具来更改，比如执行下面的命令：
 
-```
+```shell
 [root@localhost ~]# ethtool -s eth0 speed 100 duplex full
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

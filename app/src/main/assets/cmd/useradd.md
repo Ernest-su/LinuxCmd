@@ -9,15 +9,15 @@ useradd
 
 在Slackware中，adduser指令是个script程序，利用交谈的方式取得输入的用户帐号资料，然后再交由真正建立帐号的useradd命令建立新用户，如此可方便管理员建立用户帐号。在Red Hat Linux中， **adduser命令** 则是useradd命令的符号连接，两者实际上是同一个指令。
 
-### 语法  
+###  语法
 
-```
+```shell
 useradd(选项)(参数)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -c<备注>：加上备注文字。备注文字会保存在passwd的备注栏位中；
 -d<登入目录>：指定用户登入时的启始目录；
 -D：变更预设值；
@@ -33,25 +33,24 @@ useradd(选项)(参数)
 -u<uid>：指定用户id。
 ```
 
-### 参数  
+###  参数
 
 用户名：要创建的用户名。
 
-### 实例  
+###  实例
 
 新建用户加入组：
 
-```
+```shell
 useradd –g sales jack –G company,employees    //-g：加入主要组、-G：加入次要组
 ```
 
 建立一个新用户账户，并设置ID：
 
-```
+```shell
 useradd caojh -u 544
 ```
 
 需要说明的是，设定ID值时尽量要大于500，以免冲突。因为Linux安装后会建立一些特殊用户，一般0到499之间的值留给bin、mail这样的系统账号。
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

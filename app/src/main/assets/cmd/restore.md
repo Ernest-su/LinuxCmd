@@ -7,15 +7,15 @@ restore
 
 **restore命令** 是dump命令的逆过程，用于还原dump命令生成的备份文件。倾倒操作可用来备份文件，而还原操作则是写回这些已备份的文件。
 
-### 语法  
+###  语法
 
-```
+```shell
 restore(选项)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -b<区块大小>：设置区块大小，单位为Byte；
 -c：不检查倾倒操作的备份格式，仅准许读取使用旧格式的备份文件；
 -C：使用对比模式，将备份的文件与现行的文件相互对比；
@@ -33,23 +33,22 @@ restore(选项)
 -y：不询问任何问题，一律以同意回答并继续执行指令。
 ```
 
-### 实例  
+###  实例
 
-```
+```shell
 dump -9 -u -f /dev/hda3 /home/frank/
 ```
 
 用restore命令来恢复备份：
 
-```
+```shell
 restore rf /dev/hda3 /home/frank
 ```
 
 用restore命令来查看备份文件里的文件列表：
 
-```
+```shell
 restore ft /dev/hda3
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

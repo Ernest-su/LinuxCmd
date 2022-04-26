@@ -7,9 +7,9 @@ lha
 
 **lha命令** 是从lharc演变而来的压缩程序，文件经它压缩后，会另外产生具有`.lzh`扩展名的压缩文件。
 
-### 选项  
+###  选项
 
-```
+```shell
 -a或a：压缩文件，并加入到压缩文件内。
 -a<0/1/2>/u</0/1/2>   压缩文件时，采用不同的文件头。
 -c或c：压缩文件，重新建构新的压缩文件后，再将其加入。
@@ -34,13 +34,12 @@ lha
 -<a/u>z或<a/u>z：不压缩文件，直接把它加入，更新压缩文件。
 ```
 
-### 实例  
+###  实例
 
-```
+```shell
 lha -a abc.lhz a.b         #压缩a.b文件，压缩后生成 abc.lhz 文件
 lha -a abc2 /home/hnlinux  #压缩目录
 lha -xiw=agis abc          #解压文件abc，到当前目录
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

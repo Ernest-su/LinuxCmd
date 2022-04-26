@@ -7,15 +7,15 @@ blockdev
 
 **blockdev命令** 在命令调用“ioxtls”函数，以实现对设备的控制。
 
-### 语法  
+###  语法
 
-```
+```shell
 blockdev(选项)(参数)
 ```
 
 选项
 
-```
+```shell
 -V：打印版本号并退出；
 -q：安静模式；
 -v：详细信息模式；
@@ -27,29 +27,28 @@ blockdev(选项)(参数)
 --rereadpt：重新读取分区表。
 ```
 
-### 参数  
+###  参数
 
 设备文件名：指定要操作的磁盘的设备文件名。
 
-### 实例  
+###  实例
 
 设置设备为只读：
 
-```
+```shell
 blockdev --setro /dev/hda4
 ```
 
 读取设备是否为只读：
 
-```
+```shell
 blockdev --getro /dev/hda4
 ```
 
 设置设别为可读写：
 
-```
+```shell
 blockdev --setrw /dev/hda4
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

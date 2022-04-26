@@ -11,15 +11,15 @@ rmdir
 
 虽然还可以用带有`-r`选项的rm命令递归删除一个目录中的所有文件和该目录本身，但是这样做存在很大的危险性。
 
-### 语法  
+###  语法 
 
-```
+```shell
 rmdir(选项)(参数)
 ```
 
-### 选项  
+###  选项 
 
-```
+```shell
 -p或--parents：删除指定目录后，若该目录的上层目录已变成空目录，则将其一并删除；
 --ignore-fail-on-non-empty：此选项使rmdir命令忽略由于删除非空目录时导致的错误信息；
 -v或-verboes：显示命令的详细执行过程；
@@ -27,18 +27,29 @@ rmdir(选项)(参数)
 --version：显示命令的版本信息。
 ```
 
-### 参数  
+###  参数 
 
 目录列表：要删除的空目录列表。当删除多个空目录时，目录名之间使用空格隔开。
 
-### 实例  
+###  实例 
 
-删除子目录os_1和其父目录bin
+将工作目录下，名为 `www` 的子目录删除 :
 
+```shell
+rmdir www
 ```
-cd /usr/meng/test
-rmdir -p bin/os_1
+
+在工作目录下的 www 目录中，删除名为 Test 的子目录。若 Test 删除后，www 目录成为空目录，则 www 亦予删除。
+
+```shell
+rmdir -p www/Test
+```
+
+下面命令等价于 `rmdir a/b/c`, `rmdir a/b`, `rmdir a`
+
+```shell
+rmdir -p a/b/c
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+

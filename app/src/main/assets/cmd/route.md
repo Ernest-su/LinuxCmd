@@ -9,15 +9,15 @@ route
 
 在Linux系统中设置路由通常是为了解决以下问题：该Linux系统在一个局域网中，局域网中有一个网关，能够让机器访问Internet，那么就需要将这台机器的ip地址设置为Linux机器的默认路由。要注意的是，直接在命令行下执行route命令来添加路由，不会永久保存，当网卡重启或者机器重启之后，该路由就失效了；可以在`/etc/rc.local`中添加route命令来保证该路由设置永久有效。
 
-### 语法  
+###  语法
 
-```
+```shell
 route(选项)(参数)
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -A：设置地址类型；
 -C：打印将Linux核心的路由缓存；
 -v：详细信息模式；
@@ -27,9 +27,9 @@ route(选项)(参数)
 -host：到一个主机的路由表。
 ```
 
-### 参数  
+###  参数
 
-```
+```shell
 Add：增加指定的路由记录；
 Del：删除指定的路由记录；
 Target：目的网络或目的主机；
@@ -39,11 +39,11 @@ window：指定通过路由表的TCP连接的TCP窗口大小；
 dev：路由记录所表示的网络接口。
 ```
 
-### 实例  
+###  实例
 
  **显示当前路由：** 
 
-```
+```shell
 [root@localhost ~]# route
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
@@ -77,29 +77,28 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
  **添加网关/设置网关：** 
 
-```
+```shell
 route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0    #增加一条到达244.0.0.0的路由。
 ```
 
  **屏蔽一条路由：** 
 
-```
+```shell
 route add -net 224.0.0.0 netmask 240.0.0.0 reject     #增加一条屏蔽的路由，目的地址为224.x.x.x将被拒绝。
 ```
 
  **删除路由记录：** 
 
-```
+```shell
 route del -net 224.0.0.0 netmask 240.0.0.0
 route del -net 224.0.0.0 netmask 240.0.0.0 reject
 ```
 
  **删除和添加设置默认网关：** 
 
-```
+```shell
 route del default gw 192.168.120.240
 route add default gw 192.168.120.240
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

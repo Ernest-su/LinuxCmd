@@ -7,13 +7,13 @@ apache服务器创建密码认证文件
 
 **htpasswd命令** 是Apache的Web服务器内置工具，用于创建和更新储存用户名、域和用户基本认证的密码文件。
 
-### 语法  
+###  语法
 
-### htpasswd(选项)(参数)  
+###  htpasswd(选项)(参数)
 
-### 选项  
+###  选项
 
-```
+```shell
 -c：创建一个加密文件；
 -n：不更新加密文件，只将加密后的用户名密码显示在屏幕上；
 -m：默认采用MD5算法对密码进行加密；
@@ -24,16 +24,16 @@ apache服务器创建密码认证文件
 -D：删除指定的用户。
 ```
 
-### 参数  
+###  参数
 
 *   用户：要创建或者更新密码的用户名；
 *   密码：用户的新密码。
 
-### 实例  
+###  实例
 
  **利用htpasswd命令添加用户** 
 
-```
+```shell
 htpasswd -bc .passwd www.jsdig.com php
 ```
 
@@ -41,7 +41,7 @@ htpasswd -bc .passwd www.jsdig.com php
 
  **在原有密码文件中增加下一个用户** 
 
-```
+```shell
 htpasswd -b .passwd Jack 123456
 ```
 
@@ -49,7 +49,7 @@ htpasswd -b .passwd Jack 123456
 
  **不更新密码文件，只显示加密后的用户名和密码** 
 
-```
+```shell
 htpasswd -nb Jack 123456
 ```
 
@@ -57,13 +57,13 @@ htpasswd -nb Jack 123456
 
  **利用htpasswd命令删除用户名和密码** 
 
-```
+```shell
 htpasswd -D .passwd Jack
 ```
 
  **利用htpasswd命令修改密码** 
 
-```
+```shell
 htpasswd -D .passwd Jack
 htpasswd -b .passwd Jack 123456
 ```
@@ -71,4 +71,3 @@ htpasswd -b .passwd Jack 123456
 即先使用htpasswd删除命令删除指定用户，再利用htpasswd添加用户命令创建用户即可实现修改密码的功能。
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

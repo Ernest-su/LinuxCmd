@@ -9,11 +9,11 @@ PF防火墙的配置命令
 
 PF防火墙的功能很多，本站只列举一些基本配置。
 
-### 激活  
+### 激活
 
 要激活pf并且使它在启动时调用配置文件，编辑`/etc/rc.conf`文件，修改配置pf的一行：
 
-```
+```shell
 pf=yes
 ```
 
@@ -21,14 +21,14 @@ pf=yes
 
 也可以通过pfctl程序启动和停止pf：
 
-```
-# pfctl -e
-# pfctl -d
+```shell
+pfctl -e
+pfctl -d
 ```
 
 注意这仅仅是启动和关闭PF，实际它不会载入规则集，规则集要么在系统启动时载入，要在PF启动后通过命令单独载入。
 
-### 配置  
+### 配置
 
 系统引导到在rc脚本文件运行PF时PF从`/etc/pf.conf`文件载入配置规则。注意当`/etc/pf.conf`文件是默认配置文件，在系统调用rc脚本文件时，它仅仅是作为文本文件由pfctl装入并解释和插入pf的。对于一些应用来说，其他的规则集可以在系统引导后由其他文件载入。对于一些设计的非常好的unix程序，PF提供了足够的灵活性。
 
@@ -46,24 +46,22 @@ pf=yes
 
 空行会被忽略，以#开头的行被认为是注释。
 
-### 控制  
+### 控制
 
 引导之后，PF可以通过pfctl程序进行操作，以下是一些例子：
 
-```
-# pfctl -f /etc/pf.conf  载入 pf.conf 文件
-# pfctl -nf /etc/pf.conf 解析文件，但不载入
-# pfctl -Nf /etc/pf.conf 只载入文件中的NAT规则
-# pfctl -Rf /etc/pf.conf 只载入文件中的过滤规则
-
-# pfctl -sn 显示当前的NAT规则
-# pfctl -sr 显示当前的过滤规则
-# pfctl -ss 显示当前的状态表
-# pfctl -si 显示过滤状态和计数
-# pfctl -sa 显示任何可显示的
+```shell
+pfctl -f /etc/pf.conf  # 载入 pf.conf 文件
+pfctl -nf /etc/pf.conf # 解析文件，但不载入
+pfctl -Nf /etc/pf.conf # 只载入文件中的NAT规则
+pfctl -Rf /etc/pf.conf # 只载入文件中的过滤规则
+pfctl -sn # 显示当前的NAT规则
+pfctl -sr # 显示当前的过滤规则
+pfctl -ss # 显示当前的状态表
+pfctl -si # 显示过滤状态和计数
+pfctl -sa # 显示任何可显示的
 ```
 
 完整的命令列表，请参阅pfctl的man手册页。
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

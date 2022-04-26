@@ -1,7 +1,7 @@
 locate
 ===
 
-Apache服务器的性能测试工具
+比 find 好用的文件查找工具
 
 ## 补充说明
 
@@ -13,33 +13,46 @@ locate指定用在搜寻符合条件的档案，它会去储存档案与目录�
 
 locate指令和find找寻档案的功能类似，但locate是透过update程序将硬盘中的所有档案和目录资料先建立一个索引数据库，在 执行loacte时直接找该索引，查询速度会较快，索引数据库一般是由操作系统管理，但也可以直接下达update强迫系统立即修改索引数据库。
 
+### 语法
 
-### 语法  
-
-```
-locate [选择参数] [样式]
-```
-
-### 选项  
-
-```
--e   将排除在寻找的范围之外。
--1  如果 是 1．则启动安全模式。在安全模式下，使用者不会看到权限无法看到 的档案。这会始速度减慢，因为 locate 必须至实际的档案系统中取得档案的  权限资料。
--f   将特定的档案系统排除在外，例如我们没有到理要把 proc 档案系统中的档案  放在资料库中。
--q  安静模式，不会显示任何错误讯息。
--n 至多显示 n个输出。
--r 使用正规运算式 做寻找的条件。
--o 指定资料库存的名称。
--d 指定资料库的路径
--h 显示辅助讯息
--V 显示程式的版本讯息
+```shell
+locate [-d  path | --database=path] [-e | -E | --[non-]existing] [-i |
+       --ignore-case] [-0 | --null] [-c | --count] [-w |  --wholename]  [-b  |
+       --basename]  [-l  N  |  --limit=N]  [-S | --statistics] [-r | --regex ]
+       [--regextype R] [--max-database-age D] [-P | -H  |  --nofollow]  [-L  |
+       --follow] [--version] [-A | --all] [-p | --print] [--help] pattern...
 ```
 
-### 实例  
+### 选项
 
-实例1：查找和pwd相关的所有文件
-
+```shell
+-b, --basename  # 仅匹配路径名的基本名称
+-c, --count     # 只输出找到的数量
+-d, --database DBPATH # 使用DBPATH指定的数据库，而不是默认数据库 /var/lib/mlocate/mlocate.db
+-e, --existing  # 仅打印当前现有文件的条目
+-1 # 如果 是 1．则启动安全模式。在安全模式下，使用者不会看到权限无法看到 的档案。这会始速度减慢，因为 locate 必须至实际的档案系统中取得档案的  权限资料。
+-0, --null            # 在输出上带有NUL的单独条目
+-S, --statistics      # 不搜索条目，打印有关每个数据库的统计信息
+-q                    # 安静模式，不会显示任何错误讯息。
+-P, --nofollow, -H    # 检查文件存在时不要遵循尾随的符号链接
+-l, --limit, -n LIMIT # 将输出（或计数）限制为LIMIT个条目
+-n                    # 至多显示 n个输出。
+-m, --mmap            # 被忽略，为了向后兼容
+-r, --regexp REGEXP   # 使用基本正则表达式
+    --regex           # 使用扩展正则表达式
+-q, --quiet           # 安静模式，不会显示任何错误讯息
+-s, --stdio           # 被忽略，为了向后兼容
+-o                    # 指定资料库存的名称。
+-h, --help            # 显示帮助
+-i, --ignore-case     # 忽略大小写
+-V, --version         # 显示版本信息
 ```
+
+### 实例
+
+实例1：查找和 `pwd` 相关的所有文件
+
+```shell
 root ~ # locate pwd
 /bin/pwd
 /etc/.pwd.lock
@@ -58,9 +71,9 @@ root ~ # locate pwd
 /usr/share/help/el/empathy/irc-join-pwd.page
 ```
 
-实例2： 搜索etc目录下所有以sh开头的文件 
+实例2： 搜索 etc 目录下所有以 sh 开头的文件
 
-```
+```shell
 root ~ # locate /etc/sh
 /etc/shadow
 /etc/shadow-
@@ -69,7 +82,7 @@ root ~ # locate /etc/sh
 
 实例3：搜索etc目录下，所有以m开头的文件
 
-```
+```shell
 root ~ # locate /etc/m
 /etc/magic
 /etc/magic.mime
@@ -79,4 +92,9 @@ root ~ # locate /etc/m
 /etc/mate-settings-daemon
 ```
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+忽略大小写搜索当前用户目录下所有以 `r` 开头的文件 ：
+
+```shell
+locate -i ~/r
+```
+

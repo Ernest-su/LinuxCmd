@@ -1,7 +1,7 @@
 htop
 ===
 
-[非内部命令]一个互动的进程查看器，可以动态观察系统进程状况。
+[非内部命令]一个互动的进程查看器，可以动态观察系统进程状况
 
 ## 补充说明
 
@@ -24,15 +24,15 @@ top缺点：
 
 htop 官网：http://htop.sourceforge.net/
 
-### 语法  
+###  语法
 
-```
+```shell
 htop
 ```
 
 ### 参数
 
-```
+```shell
 -C --no-color               使用单色配色方案
 -d --delay=DELAY            设置更新之间的延迟，在十秒
 -s --sort-key=COLUMN        纵列排序(try --sort-key=help for a list)
@@ -42,9 +42,9 @@ htop
 -v --version                打印版本信息
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 h,?     F1：查看htop使用说明
 S       F2：设置
 /       F3：搜索进程
@@ -76,7 +76,7 @@ T：按运行时间排序
 左右键或Home， End : 移动列表  
 Space(空格) : 标记/取消标记一个进程。命令可以作用于多个进程，例如 "kill"，将应用于所有已标记的进程  
 
-```
+```shell
 
 
 ### Htop设定
@@ -126,4 +126,3 @@ F7表示减小nice值(增大优先级)，F8增大nice值(减小优先级)，选�
 **F10:退出htop**
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

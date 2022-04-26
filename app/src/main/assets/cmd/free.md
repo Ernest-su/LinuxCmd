@@ -7,15 +7,15 @@ free
 
 **free命令** 可以显示当前系统未使用的和已使用的内存数目，还可以显示被内核使用的内存缓冲区。
 
-### 语法  
+###  语法 
 
-```
+```shell
 free(选项)
 ```
 
-### 选项  
+###  选项 
 
-```bash
+```shell
 -b # 以Byte为单位显示内存使用情况；
 -k # 以KB为单位显示内存使用情况；
 -m # 以MB为单位显示内存使用情况；
@@ -26,16 +26,16 @@ free(选项)
 -V # 显示版本信息。
 ```
 
-### 实例  
+###  实例 
 
-```bash
+```shell
 free -t    # 以总和的形式显示内存的使用信息
 free -s 10 # 周期性的查询内存使用信息，每10s 执行一次命令
 ```
 
 显示内存使用情况
 
-```bash
+```shell
 free -m
              total       used       free     shared    buffers     cached
 Mem:          2016       1973         42          0        163       1497
@@ -45,7 +45,7 @@ Swap:         4094          0       4094
 
  **第一部分Mem行解释：** 
 
-```
+```shell
 total：内存总数；
 used：已经使用的内存数；
 free：空闲的内存数；
@@ -58,7 +58,7 @@ cached Page：缓存内存数。
 
  **第二部分(-/+ buffers/cache)解释:** 
 
-```
+```shell
 (-buffers/cache) used内存数：第一部分Mem行中的 used – buffers – cached
 (+buffers/cache) free内存数: 第一部分Mem行中的 free + buffers + cached
 ```
@@ -81,7 +81,7 @@ cached Page：缓存内存数。
 
 当可用内存少于额定值的时候，就会开会进行交换。如何看额定值：
 
-```bash
+```shell
 cat /proc/meminfo
 
 MemTotal:       16140816 kB
@@ -156,4 +156,4 @@ Buffer cache是针对磁盘块的缓存，也就是在没有文件系统的情�
 如果是应用服务器的话，一般只看第二行，+buffers/cache,即对应用程序来说free的内存太少了，也是该考虑优化程序或加内存了。
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+

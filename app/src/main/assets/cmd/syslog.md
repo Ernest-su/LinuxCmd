@@ -11,24 +11,23 @@ syslog
 
 通常，syslog 接受来自系统的各种功能的信息，每个信息都包括重要级。/etc/syslog.conf 文件通知 syslogd 如何根据设备和信息重要级别来报告信息。
 
-### 使用方法  
+### 使用方法
 
 在/var/log中创建并写入日志信息是由syslog协议处理的，是由守护进程sylogd负责执行。每个标准的进程都可以用syslog记录日志。可以使用logger命令通过syslogd记录日志。
 
 要向syslog文件/var/log/messages中记录日志信息：
 
-```
+```shell
 logger this is a test log line
 
 输出：
 tail -n 1 messages
 Jan  5 10:07:03 localhost root: this is a test log line
-
 ```
 
 如果要记录特定的标记（tag）可以使用：
 
-```
+```shell
 logger -t TAG this is a test log line
 
 输出：
@@ -37,4 +36,3 @@ Jan  5 10:37:14 localhost TAG: this is a test log line
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->

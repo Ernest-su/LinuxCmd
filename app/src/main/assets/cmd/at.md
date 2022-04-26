@@ -9,15 +9,15 @@ at
 
 上面介绍的都是绝对计时法，其实还能够使用相对计时法，这对于安排不久就要执行的命令是很有好处的。指定格式为：`now + count time-units`，now就是当前时间，time-units是时间单位，这里能够是minutes（分钟）、hours（小时）、days（天）、weeks（星期）。count是时间的数量，究竟是几天，还是几小时，等等。 更有一种计时方法就是直接使用today（今天）、tomorrow（明天）来指定完成命令的时间。
 
-### 语法  
+###  语法
 
-```
-at(选项)(参数)
+```shell
+at [-V] [-q 队列] [-f 文件] [-mldbv] 时间 at -c 作业 [作业...]
 ```
 
-### 选项  
+###  选项
 
-```
+```shell
 -f：指定包含具体指令的任务文件；
 -q：指定新任务的队列名称；
 -l：显示待执行任务的列表；
@@ -25,15 +25,15 @@ at(选项)(参数)
 -m：任务执行完成后向用户发送E-mail。
 ```
 
-### 参数  
+###  参数
 
 日期时间：指定任务执行的日期时间。
 
-### 实例  
+###  实例
 
 三天后的下午 5 点锺执行`/bin/ls`：
 
-```
+```shell
 [root@localhost ~]# at 5pm+3 days
 at> /bin/ls
 at> <EOT>
@@ -42,7 +42,7 @@ job 7 at 2013-01-08 17:00
 
 明天17点钟，输出时间到指定文件内：
 
-```
+```shell
 [root@localhost ~]# at 17:20 tomorrow
 at> date >/root/2013.log
 at> <EOT>
@@ -51,7 +51,7 @@ job 8 at 2013-01-06 17:20
 
 计划任务设定后，在没有执行之前我们可以用atq命令来查看系统没有执行工作任务：
 
-```
+```shell
 [root@localhost ~]# atq
 8       2013-01-06 17:20 a root
 7       2013-01-08 17:00 a root
@@ -59,7 +59,7 @@ job 8 at 2013-01-06 17:20
 
 删除已经设置的任务：
 
-```
+```shell
 [root@localhost ~]# atq
 8       2013-01-06 17:20 a root
 7       2013-01-08 17:00 a root
@@ -71,7 +71,7 @@ job 8 at 2013-01-06 17:20
 
 显示已经设置的任务内容：
 
-```
+```shell
 [root@localhost ~]# at -c 8
 #!/bin/sh
 # atrun uid=0 gid=0
@@ -81,4 +81,4 @@ date >/root/2013.log
 ```
 
 
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+
