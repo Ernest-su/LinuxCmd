@@ -21,7 +21,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-        submodules: 'true'
+        submodules: recursive
         token: ${{ secrets.TOKEN }}
         
 
