@@ -1,13 +1,20 @@
 apply plugin: 'com.android.application'
 
+// Auto-incrementing commit count based on counting commits to HEAD (Build #543)
+def gitCommitCount = Integer.parseInt('git rev-list HEAD --count'.execute().text.trim())
+def gitSHA = ('git rev-parse --short HEAD'.execute().text.trim())
+String time = getTime()
+// I want to use git tags as my version names (1.2.543)
+def gitCurrentTag = 'git describe --tags --abbrev=0'.execute([], project.rootDir).text.trim()
+def name = gitCurrentTag + "." + gitCommitCount + "." + gitSHA + "." + time
 android {
     compileSdkVersion 31
     defaultConfig {
         applicationId "ernest.linuxcmd"
         minSdkVersion 19
         targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
+        versionCode gitCommitCount
+        versionName name
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     signingConfigs {
