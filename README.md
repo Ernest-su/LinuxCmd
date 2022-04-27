@@ -13,13 +13,12 @@
 
 ### 搜索命令及命令详情
 
-![](.\screenshot\screenshot1.png)
-
+![](./screenshot/screenshot1.png)
 
 
 ### 命令列表
 
-![](.\screenshot\screenshot2.png)
+![](./screenshot/screenshot2.png)
 
 ## Linux命令分类
 
