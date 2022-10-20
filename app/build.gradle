@@ -66,5 +66,5 @@ dependencies {
     implementation 'com.atlassian.commonmark:commonmark:0.17.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     testImplementation 'junit:junit:4.13.2'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'com.google.android.material:material:1.7.0'
 }
