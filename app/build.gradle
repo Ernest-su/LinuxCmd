@@ -1,4 +1,7 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
 
 String getTime() {
     String time = (('git log --pretty=format:%ci HEAD -1'.execute().text.trim()).split(" ")[0])
@@ -18,11 +21,11 @@ String time = getTime()
 def gitCurrentTag = 'git describe --tags --abbrev=0'.execute([], project.rootDir).text.trim()
 def name = gitCurrentTag + "." + gitCommitCount + "." + gitSHA + "." + time
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     defaultConfig {
         applicationId "ernest.linuxcmd"
         minSdkVersion 19
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode gitCommitCount
         versionName name
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -48,12 +51,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    packagingOptions {
+        resources {
+            pickFirsts += ['META-INF/LICENSE-LGPL-3.txt',
+                           'META-INF/LICENSE-LGPL-2.1.txt',
+                           'META-INF/LICENSE-LGPL-W3C-TEST',
+                           'META-INF/LICENSE-W3C-TEST',
+                           'META-INF/DEPENDENCIES']
+        }
+    }
     applicationVariants.all { variant ->
         variant.outputs.all {
             outputFileName = 'LinuxCmd-' + defaultConfig.versionName + '.apk'
         }
     }
-
+    namespace 'ernest.linuxcmd'
 }
 
 dependencies {
@@ -63,8 +85,9 @@ dependencies {
     })
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.atlassian.commonmark:commonmark:0.17.0'
+    implementation 'org.commonmark:commonmark:0.20.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.vladsch.flexmark:flexmark-all:0.64.0'
 }
