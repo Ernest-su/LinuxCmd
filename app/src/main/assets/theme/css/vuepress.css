@@ -1,0 +1,179 @@
+ {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: 400;
+  word-break: break-word;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+ h1,  h2,  h3,  h4,  h5,  h6 {
+  line-height: 1.7;
+  font-weight: 600;
+  margin-top: 36px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+}
+ h1::before,  h2::before,  h3::before,  h4::before,  h5::before,  h6::before {
+  display: none;
+}
+ h1 {
+  font-size: 30px;
+  margin-bottom: 6px;
+}
+ h2 {
+  padding-bottom: 8px;
+  margin-top: 50px;
+  font-size: 24px;
+  border-bottom: 1px solid #eaecef;
+}
+ h3 {
+  font-size: 18px;
+  padding-bottom: 0;
+}
+ h4 {
+  font-size: 16px;
+}
+ h5 {
+  font-size: 14px;
+}
+ h6 {
+  font-size: 12px;
+  margin-top: 4px;
+}
+ p {
+  line-height: inherit;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+ img {
+  max-width: 100%;
+}
+ hr {
+  border: none;
+  border-top: 1px solid #eaecef;
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+ code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+  word-break: break-word;
+  border-radius: 3px;
+  overflow-x: auto;
+  font-weight: 400;
+  background-color: rgba(27, 31, 35, 0.05);
+  color: #476582;
+  margin: 0;
+  font-size: 0.85em;
+  border-radius: 3px;
+  font-size: 0.87em;
+  padding: 0.165em 0.5em;
+}
+ pre {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+  overflow: auto;
+  position: relative;
+  line-height: 1.7;
+  padding: 20px 24px;
+  background-color: #282c34;
+  border-radius: 8px;
+}
+ pre > code {
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  display: block;
+  overflow-x: auto;
+  color: #fff;
+}
+ a {
+  text-decoration: none;
+  color: #3eaf7c;
+  font-weight: 500;
+}
+ a:hover,  a:active {
+  color: #42b983;
+  border-bottom: 1px solid #42b983;
+}
+ a::before {
+  display: none;
+}
+ table {
+  display: inline-block !important;
+  font-size: 14px;
+  width: auto;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 16px 0;
+  border-collapse: collapse;
+}
+ thead {
+  background: #3eaf7c;
+  color: #fff;
+  text-align: left;
+}
+ tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+ th,  td {
+  border: 1px solid #eaecef;
+  padding: 10px 16px;
+  line-height: 22px;
+}
+ blockquote {
+  font-size: 14px;
+  padding: 4px 24px;
+  margin: 16px 0;
+  border-left: 6px solid #42b983;
+  background-color: #f3f5f7;
+  font-weight: 400;
+}
+ blockquote::after {
+  display: block;
+  content: '';
+}
+ blockquote > p {
+  margin: 16px 0;
+}
+ p,  ul,  ol {
+  line-height: 1.7;
+}
+ ol,  ul {
+  padding-left: 32px;
+}
+ ol li,  ul li {
+  margin-bottom: 0;
+  list-style: inherit;
+}
+ ol li.task-list-item,  ul li.task-list-item {
+  list-style: none;
+}
+ ol li.task-list-item ul,  ul li.task-list-item ul,  ol li.task-list-item ol,  ul li.task-list-item ol {
+  margin-top: 0;
+}
+ ol ul,  ul ul,  ol ol,  ul ol {
+  margin: 4px 0;
+}
+ ol li {
+  padding-left: 4px;
+}
+ .contains-task-list {
+  padding-left: 0;
+}
+ .task-list-item {
+  list-style: none;
+}
+@media (max-width: 720px) {
+   h1 {
+    font-size: 24px;
+  }
+   h2 {
+    font-size: 20px;
+  }
+   h3 {
+    font-size: 18px;
+  }
+}

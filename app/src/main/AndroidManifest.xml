@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
-        android:name="androidx.multidex.MultiDexApplication"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,6 +26,10 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
+        <activity
+            android:name=".setting.ThemeSettingActivity"
+            android:label="@string/setting_theme" />
+
         <provider
             android:name=".CmdSuggestionProvider"
             android:authorities="ernest.linuxcmd.CmdSuggestionProvider" />

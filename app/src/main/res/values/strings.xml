@@ -4,4 +4,8 @@
     <string name="search_hint">搜索命令</string>
     <string name="load_cmd_detail_error">加载命令详情出错啦</string>
     <string name="show_list">查看列表</string>
+    <string name="setting">设置</string>
+    <string name="save">保存</string>
+    <string name="no_modify">无修改</string>
+    <string name="setting_theme">设置主题</string>
 </resources>

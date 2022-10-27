@@ -4,14 +4,19 @@
     tools:context=".MainActivity">
     <item
         android:id="@+id/search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:icon="@drawable/ic_action_search"
         android:title="@string/search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
 
     <item
         android:id="@+id/showList"
-        android:title="@string/show_list"
         android:icon="@drawable/ic_action_show_list"
+        android:title="@string/show_list"
+        app:showAsAction="collapseActionView|ifRoom" />
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_action_setting"
+        android:title="@string/setting"
         app:showAsAction="collapseActionView|ifRoom" />
 </menu>

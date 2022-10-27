@@ -4,30 +4,30 @@ import android.app.SearchManager
 import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.Menu
 import android.view.View
+import android.webkit.JavascriptInterface
 import android.webkit.WebSettings
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import ernest.linuxcmd.CmdListAdapter.OnListItemClickListener
 import ernest.linuxcmd.databinding.ActivityMainBinding
-import ernest.linuxcmd.markdown.CommonMarkMarkdownParser
 import ernest.linuxcmd.markdown.FlexMarkMarkdownParser
-import ernest.linuxcmd.markdown.MarkdownParser
+import ernest.linuxcmd.setting.AppSetting
+import ernest.linuxcmd.setting.ThemeSettingActivity
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.*
+
 
 class MainActivity : AppCompatActivity(), OnListItemClickListener {
     private var cmdList: MutableList<String> = ArrayList()
     private var adapter = CmdListAdapter(cmdList)
     private var markdownParser = FlexMarkMarkdownParser()
-
+    private var currentTheme = ""
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity(), OnListItemClickListener {
         val settings = binding.wvContent.settings
         settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
         settings.setSupportZoom(false)
+        settings.javaScriptEnabled = true
         markdownParser.init()
     }
 
@@ -66,10 +67,10 @@ class MainActivity : AppCompatActivity(), OnListItemClickListener {
 
     private fun showCmdDetail(cmd: String) {
         try {
-            val html = getHtmlString(cmd)
+            val content = getFileContent(cmd)
             binding.wvContent.loadDataWithBaseURL(
                 null,
-                getTemplate() + html,
+                formatWithTemplate(content),
                 "text/html",
                 "UTF-8",
                 null
@@ -83,15 +84,19 @@ class MainActivity : AppCompatActivity(), OnListItemClickListener {
         }
     }
 
-    @Throws(IOException::class)
-    private fun getHtmlString(cmd: String): String {
+    private fun getFileContent(cmd: String): String {
         val assetManager = assets
-        val reader = InputStreamReader(assetManager.open(String.format("command/%s.md", cmd)))
-        return markdownParser.parseMdToHtml(reader)
+        return InputStreamReader(assetManager.open(String.format("command/%s.md", cmd))).readText()
     }
 
-    private fun getTemplate(): String {
+    private fun formatWithTemplate(content: String): String {
         return assets.open("template.html").reader().readText()
+            .replace(
+                "style.css",
+                currentTheme.ifEmpty { "style.css" }
+            ) + markdownParser.parseMdToHtml(
+            content
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -115,6 +120,10 @@ class MainActivity : AppCompatActivity(), OnListItemClickListener {
         menu.findItem(R.id.showList).setOnMenuItemClickListener {
             binding.wvContent.visibility = View.GONE
             binding.rvCmdList.visibility = View.VISIBLE
+            false
+        }
+        menu.findItem(R.id.setting).setOnMenuItemClickListener {
+            startActivity(Intent(this, ThemeSettingActivity::class.java))
             false
         }
         return true
@@ -150,5 +159,10 @@ class MainActivity : AppCompatActivity(), OnListItemClickListener {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        currentTheme = AppSetting.getString("theme")
     }
 }

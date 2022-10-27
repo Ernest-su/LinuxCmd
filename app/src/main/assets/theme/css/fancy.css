@@ -1,0 +1,190 @@
+{
+  color: #383838;
+  font-size: 15px;
+  line-height: 30px;
+  letter-spacing: 2px;
+  word-break: break-word;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  scroll-behavior: smooth;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(201, 195, 195, 0.329) 25%, rgba(209, 201, 201, 0.05) 26%, transparent 27%, transparent 74%, rgba(209, 204, 204, 0.185) 75%, rgba(180, 176, 176, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(204, 196, 196, 0.226) 25%, rgba(172, 165, 165, 0.05) 26%, transparent 27%, transparent 74%, rgba(209, 204, 204, 0.185) 75%, rgba(180, 176, 176, 0.05) 76%, transparent 77%, transparent);
+  background-color: #ffffff;
+  background-size: 50px 50px;
+  padding-bottom: 60px;
+}
+::selection {
+  color: #fff;
+  background-color: #a862ea;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 24px 0 12px 0;
+  color: #a862ea;
+}
+h1 {
+  line-height: 2;
+  font-size: 1.4em;
+}
+h1 ~ p:first-of-type::first-letter {
+  color: #a862ea;
+  float: left;
+  font-size: 2em;
+  margin-right: 0.4em;
+  font-weight: bolder;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1.1em;
+}
+ol, ul {
+  padding-left: 2em;
+}
+ol li, ul li {
+  margin-bottom: 0;
+  padding-left: 0.2em;
+}
+ol li::marker, ul li::marker {
+  color: #a862ea;
+}
+ol li.task-list-item, ul li.task-list-item {
+  list-style: none;
+}
+ol li.task-list-item ul, ul li.task-list-item ul, ol li.task-list-item ol, ul li.task-list-item ol {
+  margin-top: 0;
+}
+ol ul, ul ul, ol ol, ul ol {
+  margin-top: 10px;
+}
+p, li, code, h1, h2, h3, h4, h5, h6, a {
+  opacity: 0.85;
+  vertical-align: baseline;
+  transition: all 0.1s ease;
+}
+p:hover, li:hover, code:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, a:hover {
+  opacity: 1;
+}
+a {
+  position: relative;
+  display: inline-block;
+  color: #a862ea;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+a::after {
+  content: '';
+  position: absolute;
+  width: 98%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  background-color: #a862ea;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+a:active, a:link {
+  color: #a862ea;
+}
+img {
+  max-width: 100%;
+  user-select: none;
+  margin: 1em 0;
+  transition: transform 0.2s ease 0s;
+  background-color: #f8f5ff;
+  box-shadow: 0 0 10px #e7daff;
+}
+img:hover {
+  opacity: 1;
+  box-shadow: 0 0 20px #e7daff;
+  transform: translateY(-1px);
+}
+blockquote {
+  padding: 0.5em 1em;
+  margin: 12px 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-left: 3px solid #a862ea;
+  background-color: #f8f5ff;
+}
+blockquote > p {
+  margin: 0;
+}
+.math {
+  font-style: italic;
+  margin: 12px 0;
+  padding: 0.5em 1em;
+  background-color: #f8f5ff;
+}
+.math > p {
+  margin: 0;
+}
+code {
+  padding: 2px 0.4em;
+  overflow-x: auto;
+  color: #a862ea;
+  font-weight: bold;
+  word-break: break-word;
+  font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+  background-color: #f8f5ff;
+}
+pre {
+  margin: 2em 0;
+}
+pre > code {
+  display: block;
+  padding: 1.5em;
+  word-break: normal;
+  font-size: 0.9em;
+  font-style: normal;
+  font-weight: normal;
+  font-family: Operator Mono, Consolas, Monaco, Menlo, monospace;
+  line-height: 18px;
+  color: #383838;
+  border-radius: 2px;
+  scroll-behavior: smooth;
+  box-shadow: 0 0 10px #e7daff;
+}
+pre > code:hover {
+  box-shadow: 0 0 20px #e7daff;
+}
+pre > code::-webkit-scrollbar {
+  height: 6px;
+  background-color: #f8f5ff;
+}
+pre > code::-webkit-scrollbar-thumb {
+  background-color: #e7daff;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+hr {
+  margin: 2em 0;
+  border-top: 1px solid #a862ea;
+}
+table {
+  width: 100%;
+  font-size: 12px;
+  max-width: 100%;
+  overflow: auto;
+  border-collapse: collapse;
+}
+thead {
+  color: #a862ea;
+  background: #f8f5ff;
+}
+td, th {
+  padding: 0.5em;
+  border: solid 1px #e7daff;
+}
+tr {
+  background-color: #f8f5ff;
+}
+@media (max-width: 720px) {
+  {
+    font-size: 12px;
+  }
+}
