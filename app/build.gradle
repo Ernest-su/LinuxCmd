@@ -76,6 +76,11 @@ android {
             outputFileName = 'LinuxCmd-' + defaultConfig.versionName + '.apk'
         }
     }
+    configurations {
+        all {
+            exclude module: 'commons-logging'
+        }
+    }
     namespace 'ernest.linuxcmd'
 }
 
