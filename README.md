@@ -4,22 +4,29 @@
 
 
 
-520多个 Linux 命令大全，内容包含 Linux 命令手册、详解、学习，值得收藏的 Linux 命令速查手册。内容来自网络和网友的补充，非常值得收藏的 Linux 命令速查手册。版权归属原作者，对任何法律问题及风险不承担任何责任
+580多个 Linux 命令大全，内容包含 Linux 命令手册、详解、学习，值得收藏的 Linux 命令速查手册。内容来自网络和网友的补充，非常值得收藏的 Linux 命令速查手册。版权归属原作者，对任何法律问题及风险不承担任何责任
 
 命令行文件来自 [jaywcjlove/linux-command](https://github.com/jaywcjlove/linux-command.git)   💗 感谢作者的辛勤付出。
 欢迎PR.
 
 ## 界面截图
 
-### 搜索命令及命令详情
+### 命令详情
 
-![](./screenshot/screenshot1.png)
+![](./screenshot/1.jpg)
 
 
-### 命令列表
+### 主题列表
 
-![](./screenshot/screenshot2.png)
+![](./screenshot/2.jpg)
 
+### 设置主题
+
+![](./screenshot/3.jpg)
+
+### 命令搜索
+
+![](./screenshot/4.jpg)
 ## Linux命令分类
 
 *这里存放Linux 命令大全没有实时同步，请以实际内容为准。
