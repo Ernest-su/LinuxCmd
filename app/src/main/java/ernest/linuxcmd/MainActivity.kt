@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import ernest.linuxcmd.CmdListAdapter.OnListItemClickListener
 import ernest.linuxcmd.databinding.ActivityMainBinding
 import ernest.linuxcmd.markdown.FlexMarkMarkdownParser
+import ernest.linuxcmd.markdown.MarkDownFileUtil
 import ernest.linuxcmd.setting.AppSetting
 import ernest.linuxcmd.setting.ThemeSettingActivity
 import java.io.IOException
@@ -24,7 +25,7 @@ import java.io.InputStreamReader
 
 
 class MainActivity : AppCompatActivity(), OnListItemClickListener {
-    private var cmdList: MutableList<String> = ArrayList()
+    private var cmdList: MutableList<Pair<String, String>> = ArrayList()
     private var adapter = CmdListAdapter(cmdList)
     private var markdownParser = FlexMarkMarkdownParser()
     private var currentTheme = ""
@@ -36,8 +37,10 @@ class MainActivity : AppCompatActivity(), OnListItemClickListener {
         val assetManager = assets
         if (assetManager != null) {
             try {
-                assetManager.list("command")?.let {
-                    cmdList.addAll(it)
+                assetManager.list("command")?.let { list ->
+                    cmdList.addAll(list.map {
+                        it to MarkDownFileUtil.getTitle(this, it)
+                    })
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -149,7 +152,7 @@ class MainActivity : AppCompatActivity(), OnListItemClickListener {
     }
 
     override fun onListItemClick(position: Int) {
-        showCmdDetail(cmdList[position].replace(".md", ""))
+        showCmdDetail(cmdList[position].first.replace(".md", ""))
     }
 
     override fun onBackPressed() {

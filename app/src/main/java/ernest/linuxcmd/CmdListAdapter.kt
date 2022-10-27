@@ -1,15 +1,17 @@
 package ernest.linuxcmd
 
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import ernest.linuxcmd.databinding.ItemCmdBinding
 
 /**
  * Created by suqishuo on 2017/3/21.
  * desc:
  */
-class CmdListAdapter(var cmdList: List<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CmdListAdapter(var cmdList: List<Pair<String, String>>) :
+    RecyclerView.Adapter<CmdListAdapter.CmdItemViewHolder>() {
     private var onListItemClickListener: OnListItemClickListener? = null
 
     interface OnListItemClickListener {
@@ -20,24 +22,22 @@ class CmdListAdapter(var cmdList: List<String>) : RecyclerView.Adapter<RecyclerV
         this.onListItemClickListener = onListItemClickListener
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val textView = TextView(parent.context)
-        textView.isClickable = true
-        textView.setPadding(8, 8, 8, 8)
-        val params = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CmdItemViewHolder {
+        return CmdItemViewHolder(
+            ItemCmdBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
-        textView.layoutParams = params
-        return CmdItemViewHolder(textView)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CmdItemViewHolder, position: Int) {
         holder.itemView.setBackgroundColor(
             holder.itemView.resources.getColor(if (position % 2 == 0) R.color.item_bg_odd else R.color.item_bg_even)
         )
-        (holder.itemView as TextView).textSize = 24f
-        (holder.itemView as TextView).text = cmdList[position].replace(".md", "")
+        holder.binding.tvTitle.text = cmdList[position].first.replace(".md", "")
+        holder.binding.tvDesc.text = cmdList[position].second
         holder.itemView.setOnClickListener {
             onListItemClickListener?.onListItemClick(holder.adapterPosition)
         }
@@ -47,6 +47,6 @@ class CmdListAdapter(var cmdList: List<String>) : RecyclerView.Adapter<RecyclerV
         return cmdList.size
     }
 
-    private inner class CmdItemViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView)
+    inner class CmdItemViewHolder(var binding: ItemCmdBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }
