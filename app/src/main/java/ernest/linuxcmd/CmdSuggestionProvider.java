@@ -30,7 +30,7 @@ public class CmdSuggestionProvider extends ContentProvider {
         AssetManager assetManager = getContext().getAssets();
         if (assetManager != null) {
             try {
-                fileNames.addAll(Arrays.asList(assetManager.list("cmd")));
+                fileNames.addAll(Arrays.asList(assetManager.list("command")));
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements CmdListAdapter.On
         AssetManager assetManager = getAssets();
         if (assetManager != null) {
             try {
-                cmdList.addAll(Arrays.asList(assetManager.list("cmd")));
+                cmdList.addAll(Arrays.asList(assetManager.list("command")));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements CmdListAdapter.On
 
         try {
             AssetManager assetManager = getAssets();
-            InputStreamReader reader = new InputStreamReader(assetManager.open(String.format("cmd/%s.md", cmd)));
+            InputStreamReader reader = new InputStreamReader(assetManager.open(String.format("command/%s.md", cmd)));
             Parser parser = Parser.builder().build();
             Node document = parser.parseReader(reader);
             HtmlRenderer renderer = HtmlRenderer.builder().build();
