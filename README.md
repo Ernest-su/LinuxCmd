@@ -1,7 +1,7 @@
 
 
 [![Android CI](https://github.com/Ernest-su/LinuxCmd/actions/workflows/android.yml/badge.svg)](https://github.com/Ernest-su/LinuxCmd/actions/workflows/android.yml) [![GitHub forks](https://img.shields.io/github/forks/Ernest-su/LinuxCmd)](https://github.com/Ernest-su/LinuxCmd/network) [![GitHub stars](https://img.shields.io/github/stars/Ernest-su/LinuxCmd)](https://github.com/Ernest-su/LinuxCmd/stargazers) [![GitHub issues](https://img.shields.io/github/issues/Ernest-su/LinuxCmd)](https://github.com/Ernest-su/LinuxCmd/issues)
-
+![last commit](https://img.shields.io/github/last-commit/Ernest-su/LinuxCmd)
 
 
 580多个 Linux 命令大全，内容包含 Linux 命令手册、详解、学习，值得收藏的 Linux 命令速查手册。内容来自网络和网友的补充，非常值得收藏的 Linux 命令速查手册。版权归属原作者，对任何法律问题及风险不承担任何责任
